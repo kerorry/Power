@@ -1,0 +1,8 @@
+# 全部文本文件按 CRLF 检出，与本项目 .editorconfig 保持一致
+* text=auto eol=crlf
+
+# 二进制资源不做任何转换
+*.ico binary
+*.exe binary
+*.res binary
+*.obj binary

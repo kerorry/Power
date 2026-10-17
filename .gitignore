@@ -1,0 +1,8 @@
+# windows 拉的 
+desktop.ini
+
+# 编译输出
+*.exe
+*.obj
+*.res
+*.pdb
