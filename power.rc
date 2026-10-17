@@ -1,0 +1,115 @@
+#pragma code_page(65001)
+#include <windows.h>
+#include "resource.h"
+
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+
+IDI_ICON1 ICON "icon.ico"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1, 0, 0, 1
+PRODUCTVERSION  1, 0, 0, 1
+FILEFLAGSMASK   0x3fL
+FILEFLAGS       0
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName",      "Kerorry\0"
+            VALUE "FileDescription",  "Power!\0"
+            VALUE "FileVersion",      "1.0.0.1\0"
+            VALUE "InternalName",     "Power.exe\0"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 Kerorry\0"
+            VALUE "OriginalFilename", "Power.exe\0"
+            VALUE "ProductName",      "Power\0"
+            VALUE "ProductVersion",   "1.0.0.1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+// 说明：模板中的按钮坐标只是设计期占位。运行时由 ui.c 的
+// UpdateButtonPositions() 按客户区宽度重新计算，资源里的坐标不会生效。
+IDD_TOOLBOX DIALOGEX 0, 0, 150, 200
+STYLE DS_CENTER | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_VSCROLL
+CAPTION "Power!"
+FONT 9, "Segoe UI", 400, 0, 0x0
+BEGIN
+    CONTROL "命令提示符",   IDC_CMD,      "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 50,  190, 25
+    CONTROL "注册表编辑器", IDC_REGEDIT,  "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 88,  190, 25
+    CONTROL "任务管理器",   IDC_TASKMGR,  "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 126, 190, 25
+    CONTROL "计算器",       IDC_CALC,     "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 164, 190, 25
+    CONTROL "控制面板",     IDC_CONTROL,  "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 202, 190, 25
+    CONTROL "记事本",       IDC_NOTEPAD,  "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 240, 190, 25
+    CONTROL "资源管理器",   IDC_EXPLORER, "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 278, 190, 25
+    CONTROL "系统配置",     IDC_MSCONFIG, "Button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 30, 316, 190, 25
+END
+
+STRINGTABLE
+BEGIN
+    IDS_APP_TITLE               "Power!"
+    IDS_ERR_GET_TOKEN           "获取 SYSTEM 令牌失败"
+    IDS_ERR_RUN                 "启动程序失败"
+    IDS_ERR_TASKDIALOG          "TaskDialog 调用失败"
+    IDS_ERR_UAC                 "UAC 提权请求失败"
+    IDS_ERR_LAUNCH              "启动命令构造失败"
+    IDS_CAPTION_SUCCESS         "成功"
+    IDS_CAPTION_ERROR           "错误"
+
+    IDS_MENU_TITLE              "请选择要使用的权限："
+    IDS_MENU_CONTENT            "请根据情况选择。"
+    IDS_MENU_BTN_ADMIN          "管理员"
+    IDS_MENU_BTN_SYSTEM         "SYSTEM"
+    IDS_MENU_BTN_EXIT           "退出"
+
+    IDS_TAB1                    "启动程序"
+    IDS_TAB2                    "文件操作"
+
+    IDS_CMD_TEXT                "命令提示符"
+    IDS_REGEDIT_TEXT            "注册表编辑器"
+    IDS_TASKMGR_TEXT            "任务管理器"
+    IDS_CALC_TEXT               "计算器"
+    IDS_CONTROL_TEXT            "控制面板"
+    IDS_NOTEPAD_TEXT            "记事本"
+    IDS_EXPLORER_TEXT           "资源管理器"
+    IDS_MSCONFIG_TEXT           "系统配置"
+    IDS_CMD_ARGS                "/k title 命令提示符"
+
+    IDS_OWNER_ADMIN             "修改所有者为 Administrators"
+    IDS_OWNER_SYSTEM            "修改所有者为 SYSTEM"
+    IDS_ADD_PERM_ADMIN          "仅 管理员 完全控制"
+    IDS_ADD_PERM_SYSTEM         "仅 SYSTEM 完全控制"
+    IDS_FORCE_DELETE            "强制删除"
+    IDS_DELETE_ON_REBOOT        "重启后删除"
+
+    IDS_SYSTEM_TOKEN_FAILED     "无法获取系统令牌"
+    IDS_IMPERSONATE_FAILED      "模拟用户失败"
+    IDS_TAKE_OWNERSHIP_FAILED   "取得对象所有权失败"
+    IDS_RESTORE_PRIVILEGE_FAILED "恢复特权失败"
+    IDS_CONVERT_SID_FAILED      "转换 SID 失败"
+
+    IDS_OWNER_CHANGED           "所有者已成功更改"
+    IDS_OWNER_CHANGE_FAILED     "更改所有者失败"
+    IDS_CREATE_DACL_FAILED      "创建 DACL 失败"
+    IDS_DACL_REPLACED           "DACL 已成功替换"
+    IDS_DACL_REPLACEMENT_FAILED "替换 DACL 失败"
+    IDS_DACL_CONFIRM            "此操作是不可逆的权限覆盖，请确认：\n\n目标文件：\n%s\n\n操作后该文件将只有 %s 拥有完全控制，具体影响：\n  1. 现有所有权限条目都会被清除，包括 SYSTEM 和你当前账户的条目\n  2. 与父目录的权限继承关系会被切断，之后父目录权限变化不再影响它\n  3. 除 %s 之外的任何账户都将无法读取、修改或删除该文件，包括你自己\n\n如果目标不是 SYSTEM，误操作后你需要以管理员或 SYSTEM 权限运行本工具才能恢复访问。\n\n确定要继续吗？"
+    IDS_DACL_REPLACE_TARGET     "\n将只保留 %s 一条完全控制条目。"
+    IDS_DACL_REMOVE_OWNER       "\n当前所有者 %s 的访问也将被移除。"
+
+    IDS_DELETE_NO_TOKEN         "无法以 SYSTEM 令牌执行，操作取消"
+    IDS_DELETE_OK               "文件已成功删除"
+    IDS_DELETE_FAILED           "删除失败，错误码: %lu"
+    IDS_REBOOT_PRIV_FAILED      "无法启用 SeRestorePrivilege，标记失败"
+    IDS_REBOOT_OK               "文件已标记为重启后删除"
+    IDS_REBOOT_FAILED           "标记失败，错误码: %lu"
+    IDS_SID_ADMIN_FAILED        "无法获取 Administrators SID"
+    IDS_SID_SYSTEM_FAILED       "无法获取 SYSTEM SID"
+END
